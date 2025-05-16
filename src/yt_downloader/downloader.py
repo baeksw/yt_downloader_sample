@@ -32,4 +32,7 @@ def download_youtube_video(url: str, output_path: str = ".", fmt: str = "best"):
             }],
         })
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+        try:
+            ydl.download([url])
+        except Exception as e:
+            pass
