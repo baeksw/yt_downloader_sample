@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Tools",
+      "type": "shell",
+      "command": "conda",
+      "args": ["run", "-n", "cook", "pip", "install", "--upgrade", "build", "wheel", "setuptools"]
+    },
+    {
+      "label": "Install Requirements",
+      "type": "shell",
+      "command": "conda",
+      "args": ["run", "-n", "cook", "pip", "install", "-r", "requirements.txt"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Package",
+      "type": "shell",
+      "command": "conda",
+      "args": ["run", "-n", "cook", "python", "-m", "build"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Distribution",
+      "type": "shell",
+      "command": "conda",
+      "args": ["run", "-n", "cook", "pip", "install", "dist/*"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Full Build & Install",
+      "dependsOn": [
+        "Install Requirements",
+        "Build Package",
+        "Install Distribution"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
+

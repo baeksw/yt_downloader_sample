@@ -1,0 +1,4 @@
+# MANIFEST.in
+include src/yt_downloader/images/*.png
+include src/yt_downloader/config/*.json
+include src/yt_downloader/schemas/*.xml
